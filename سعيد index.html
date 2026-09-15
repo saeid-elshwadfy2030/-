@@ -1,0 +1,2123 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقع الكاتب الروائي سعيد الشوادفي</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --primary: #1e293b;
+            --accent: #d97706;
+            --accent-hover: #b45309;
+            --bg-light: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --border-color: #f1f5f9;
+            --input-border: #cbd5e1;
+            --admin-bg: #f1f5f9;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body.dark-mode {
+            --primary-dark: #020617;
+            --primary: #0f172a;
+            --bg-light: #0b0f19;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --input-border: #475569;
+            --admin-bg: #1e293b;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        header {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 15px;
+        }
+
+        .logo {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .logo img {
+            max-height: 40px;
+            width: auto;
+            border-radius: 6px;
+            object-fit: contain;
+        }
+
+        .logo i {
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.92rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .stats-badge {
+            background: rgba(217, 119, 6, 0.15);
+            color: #f59e0b;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            white-space: nowrap;
+        }
+
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 7px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .login-btn-nav {
+            background: rgba(217, 119, 6, 0.15);
+            color: var(--accent) !important;
+            padding: 6px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(217, 119, 6, 0.3);
+            cursor: pointer;
+        }
+
+        .login-btn-nav:hover {
+            background: var(--accent) !important;
+            color: var(--white) !important;
+        }
+
+        .hero {
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background 0.5s ease;
+            width: 100%;
+            aspect-ratio: 820 / 312;
+            max-height: 450px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.6);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            color: #e2e8f0;
+            font-weight: 400;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(217, 119, 6, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(217, 119, 6, 0.4);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: var(--primary-dark);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e1;
+        }
+
+        section {
+            padding: 80px 5%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 12px;
+            font-weight: 800;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* تنسيقات قسم التعريف بالكاتب المميز */
+        .author-about-card {
+            background: rgba(217, 119, 6, 0.08);
+            border-radius: 16px;
+            padding: 45px 35px;
+            box-shadow: var(--card-shadow);
+            border: 2px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        body.dark-mode .author-about-card {
+            background: rgba(217, 119, 6, 0.12);
+        }
+
+        .author-about-card::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 7rem;
+            color: var(--accent);
+            opacity: 0.12;
+            pointer-events: none;
+        }
+
+        .author-bio-content p {
+            font-size: 1.15rem;
+            line-height: 2.1;
+            color: var(--text-main);
+            margin-bottom: 22px;
+            text-align: justify;
+        }
+
+        .author-bio-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+            color: var(--text-muted);
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .audio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .audio-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: var(--transition);
+        }
+
+        .audio-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .audio-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .audio-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(217, 119, 6, 0.15);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
+        .audio-info h3 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+            margin-bottom: 3px;
+        }
+
+        .audio-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        audio {
+            width: 100%;
+            height: 38px;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .audio-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 10px;
+            margin-top: 5px;
+        }
+
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .book-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+        }
+
+        .book-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-category {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: rgba(15, 23, 42, 0.85);
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .book-free-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: #10b981;
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            font-weight: 700;
+            z-index: 3;
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+        }
+
+        .book-reads-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: rgba(217, 119, 6, 0.9);
+            color: var(--white);
+            font-size: 0.75rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            backdrop-filter: blur(4px);
+            font-weight: 600;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .book-cover {
+            width: 100%;
+            aspect-ratio: 14 / 20;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            overflow: hidden;
+            position: relative;
+            padding: 12px;
+        }
+
+        .book-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px 8px 8px 4px;
+            box-shadow: -4px 0 10px rgba(0, 0, 0, 0.25), inset 2px 0 3px rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+            filter: contrast(1.02);
+        }
+
+        .book-card:hover .book-cover img {
+            transform: scale(1.03);
+            box-shadow: -6px 0 15px rgba(0, 0, 0, 0.35);
+        }
+
+        .book-cover::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            bottom: 12px;
+            width: 4px;
+            background: rgba(255, 255, 255, 0.25);
+            z-index: 2;
+            pointer-events: none;
+            border-radius: 2px;
+        }
+
+        .book-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .book-info h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .book-info p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 6px;
+        }
+
+        .book-prices-display {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin: 8px 0;
+            padding: 8px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            border: 1px dashed var(--border-color);
+            font-size: 0.85rem;
+        }
+
+        .book-prices-display .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-main);
+        }
+
+        .book-prices-display .price-amount {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .book-rating-display {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+            color: #f59e0b;
+        }
+
+        .book-rating-display span {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+
+        .book-audio-player {
+            margin: 10px 0;
+            background: var(--bg-light);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .book-audio-player label {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .book-actions-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 5px;
+        }
+
+        .action-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-action {
+            flex: 1;
+            padding: 7px 10px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-light);
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn-action:hover {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .btn-action-primary {
+            background: rgba(217, 119, 6, 0.1);
+            color: var(--accent);
+            border-color: rgba(217, 119, 6, 0.2);
+        }
+
+        .btn-action-primary:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-action-green {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-action-green:hover {
+            background: #10b981;
+            color: var(--white);
+            border-color: #10b981;
+        }
+
+        .admin-card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .admin-card-actions button {
+            flex: 1;
+            padding: 6px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .btn-edit { background: #e0f2fe; color: #0284c7; }
+        .btn-delete { background: #ffe4e6; color: #e11d48; }
+
+        #admin-panel {
+            background: var(--admin-bg);
+            border: 2px dashed var(--accent);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 40px auto;
+            display: none;
+        }
+
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 10px;
+            flex-wrap: wrap;
+        }
+
+        .admin-tab-btn {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+
+        .admin-tab-btn.active {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .admin-tab-content {
+            display: none;
+        }
+
+        .admin-tab-content.active {
+            display: block;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        .submit-section {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .social-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .social-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--white);
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .social-card i {
+            font-size: 1.8rem;
+        }
+
+        .social-facebook { background: #1877f2; }
+        .social-twitter { background: #000000; }
+        .social-tiktok { background: linear-gradient(45deg, #00f2fe, #4facfe, #ff0050); }
+        .social-instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--input-border);
+            background: var(--card-bg);
+            color: var(--text-main);
+            border-radius: 8px;
+            outline: none;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--card-bg);
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--input-border);
+            cursor: pointer;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: var(--accent);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 550px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            position: relative;
+            border: 1px solid var(--border-color);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-reader-content {
+            max-width: 750px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; left: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-muted);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .payment-card {
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background: var(--bg-light);
+            font-size: 0.85rem;
+        }
+
+        .payment-card.active, .payment-card:hover {
+            border-color: var(--accent);
+            background: rgba(217, 119, 6, 0.08);
+        }
+
+        .payment-card i {
+            font-size: 1.6rem;
+            color: var(--accent);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .payment-details {
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--admin-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .reader-body {
+            background: var(--bg-light);
+            border-radius: 8px;
+            padding: 30px;
+            min-height: 250px;
+            max-height: 450px;
+            overflow-y: auto;
+            border: 1px solid var(--border-color);
+            font-size: 1.1rem;
+            line-height: 2;
+            margin: 15px 0;
+            white-space: pre-wrap;
+            position: relative;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media print {
+            body { display: none !important; }
+        }
+
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 35px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #334155;
+        }
+
+        .footer-contacts-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-whatsapp-link, .footer-email-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 30px;
+            transition: var(--transition);
+        }
+
+        .footer-whatsapp-link {
+            color: #25d366;
+            background: rgba(37, 211, 102, 0.1);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .footer-whatsapp-link:hover {
+            background: #25d366;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer-email-link {
+            color: #ea4335;
+            background: rgba(234, 67, 53, 0.1);
+            border: 1px solid rgba(234, 67, 53, 0.3);
+        }
+
+        .footer-email-link:hover {
+            background: #ea4335;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 992px) {
+            .navbar { flex-wrap: wrap; }
+            .logo { font-size: 1rem; }
+        }
+
+        @media (max-width: 768px) {
+            section { padding: 50px 4%; }
+            .navbar { flex-direction: column; gap: 12px; }
+            .logo { font-size: 0.95rem; }
+            
+            .hero { 
+                aspect-ratio: 16 / 9; 
+                padding: 20px 15px; 
+                max-height: none;
+            }
+            .hero h1 { font-size: 1.6rem; }
+            .hero p { font-size: 0.95rem; }
+            
+            .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            .books-grid, .audio-grid { grid-template-columns: 1fr; }
+            .footer-contacts-container { flex-direction: column; gap: 10px; }
+            .author-about-card { padding: 30px 20px; }
+            .author-bio-content p { font-size: 1rem; line-height: 1.9; }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;">
+
+    <header>
+        <nav class="navbar">
+            <div class="logo" id="site-logo">
+                <i class="fas fa-feather-alt" id="logo-icon-nav"></i>
+                <img id="logo-img-nav" src="" alt="لوجو" style="display:none;">
+                <span id="site-title-nav">الكاتب الروائي سعيد الشوادفي</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#about-author">عن الكاتب</a></li>
+                <li><a href="#books">المؤلفات والأعمال</a></li>
+                <li><a href="#audio-section">المكتبة الصوتية</a></li>
+                <li><a href="#publish">تواصل مع الكاتب</a></li>
+                <li>
+                    <div class="stats-badge" title="عدد زوار الموقع">
+                        <i class="fas fa-eye"></i> <span id="site-visitor-count">0</span> زائر
+                    </div>
+                </li>
+                <li><button class="theme-toggle-btn" id="theme-btn" onclick="toggleDarkMode()" title="تغيير الوضع"><i class="fas fa-moon"></i></button></li>
+                <li><a href="javascript:void(0)" id="auth-btn" class="login-btn-nav" onclick="toggleAuthModal()"><i class="fas fa-lock"></i> لوحة التحكم</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1 id="hero-title-display">الكاتب الروائي سعيد الشوادفي</h1>
+        <p id="hero-desc-display">مرحباً بكم في العالم الأدبي للكاتب سعيد الشوادفي.. رحلة بين ظلال السطور وإبداع الروايات والكلمات.</p>
+    </section>
+
+    <!-- قسم عن الكاتب سعيد الشوادفي -->
+    <section id="about-author">
+        <div class="section-title">
+            <h2>عن الكاتب سعيد الشوادفي</h2>
+        </div>
+        <div class="author-about-card">
+            <div class="author-bio-content" id="author-bio-container">
+                <p>سعيد الشوادفي هو كاتب روائي، وشاعر عربي معاصر، يمتلك قلمًا نابضًا بالحياة؛ يتنقل ببراعة بين مشاعر الإنسانية الدافئة وأسرار الواقع الغامض.</p>
+                <p>عُرف الشوادفي بتنوعه الأدبي الفريد، حيث ينسج من الكلمات عوالم تمزج بين الرومانسية الشفافة؛ القضايا الاجتماعية الواقعية، والإثارة التشويقية، مما يجعله واحدًا من الأدباء الذين يتركون بصمة واضحة في قلب القارئ وعقله.</p>
+                <p>تتميز كتاباته بأسلوب سردي يجمع بين البساطة الجذابة والعمق اللغوي، وكأنه يهمس في أذن القارئ ليأخذه في رحلات عبر صفحات كتبه، متنقلاً بين أروقة الغموض، صراعات النفس، ونبضات القلوب.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المؤلفات والأعمال الأدبية -->
+    <section id="books">
+        <div class="section-title">
+            <h2>المؤلفات والأعمال الأدبية</h2>
+        </div>
+
+        <div class="filter-container">
+            <button class="filter-btn active" onclick="filterBooks('الكل')">الكل</button>
+            <button class="filter-btn" onclick="filterBooks('مجاني')">الأعمال المجانية</button>
+            <button class="filter-btn" onclick="filterBooks('روايات')">روايات</button>
+            <button class="filter-btn" onclick="filterBooks('قصص')">قصص</button>
+            <button class="filter-btn" onclick="filterBooks('أدب الأطفال')">أدب الأطفال</button>
+            <button class="filter-btn" onclick="filterBooks('شعر وخواطر')">شعر وخواطر</button>
+            <button class="filter-btn" onclick="filterBooks('أخرى')">أخرى</button>
+        </div>
+
+        <div class="books-grid" id="books-container"></div>
+    </section>
+
+    <!-- قسم المكتبة الصوتية والروايات المسموعة -->
+    <section id="audio-section">
+        <div class="section-title">
+            <h2>المكتبة الصوتية والروايات المسموعة</h2>
+        </div>
+        <div class="audio-grid" id="audio-container"></div>
+    </section>
+
+    <!-- لوحة التحكم الشاملة -->
+    <section id="admin-panel">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h3><i class="fas fa-sliders-h"></i> لوحة التحكم الشاملة</h3>
+            <span style="color: var(--accent); font-weight: bold;">(وضع المشرف نشط)</span>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab-btn active" onclick="switchTab('tab-books')">إدارة الأعمال والصفحات</button>
+            <button class="admin-tab-btn" id="audio-tab-btn" onclick="switchTab('tab-audio')">إدارة الصوتيات</button>
+            <button class="admin-tab-btn" onclick="switchTab('tab-hero')">إدارة اللوجو والواجهة والخلفية</button>
+            <button class="admin-tab-btn" onclick="switchTab('tab-about')">إدارة نبذة الكاتب</button>
+            <button class="admin-tab-btn" onclick="switchTab('tab-footer')">إدارة البيانات والتواصل</button>
+            <button class="admin-tab-btn" onclick="switchTab('tab-credentials')">إدارة الحساب والأمان</button>
+        </div>
+
+        <div id="tab-books" class="admin-tab-content active">
+            <form id="book-form" onsubmit="handleBookSubmit(event)">
+                <input type="hidden" id="edit-id" value="">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>عنوان العمل</label>
+                        <input type="text" id="book-title" required placeholder="عنوان العمل">
+                    </div>
+                    <div class="form-group">
+                        <label>اسم المؤلف</label>
+                        <input type="text" id="book-author" required placeholder="اسم المؤلف" value="سعيد الشوادفي">
+                    </div>
+                    <div class="form-group">
+                        <label>التصنيف</label>
+                        <select id="book-category" required>
+                            <option value="روايات">روايات</option>
+                            <option value="قصص">قصص</option>
+                            <option value="أدب الأطفال">أدب الأطفال</option>
+                            <option value="شعر وخواطر">شعر وخواطر</option>
+                            <option value="مقالات">مقالات</option>
+                            <option value="أخرى">أخرى</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>سعر النسخة الورقية</label>
+                        <input type="text" id="book-price-paper" placeholder="مثال: 150 ج.م">
+                    </div>
+                    <div class="form-group">
+                        <label>سعر النسخة الالكترونية</label>
+                        <input type="text" id="book-price-digital" placeholder="مثال: 50 ج.م">
+                    </div>
+                    <div class="form-group">
+                        <label>نوع الكتاب (تسعير)</label>
+                        <label class="checkbox-group">
+                            <input type="checkbox" id="book-is-free">
+                            <span>عمل مجاني (إتاحة بلا مقابل)</span>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>صورة الغلاف (من الجهاز أو رابط)</label>
+                        <input type="file" id="book-cover-file" accept="image/*" style="margin-bottom: 5px;">
+                        <input type="url" id="book-cover" placeholder="أو أضف رابط صورة الغلاف (https://...)">
+                    </div>
+                    <div class="form-group">
+                        <label>رابط الملف الصوتي للعمل (MP3 / Direct Audio URL)</label>
+                        <input type="url" id="book-audio-url" placeholder="https://example.com/audio.mp3">
+                    </div>
+                    <div class="form-group">
+                        <label>ملف الكتاب PDF (من الجهاز أو رابط)</label>
+                        <input type="file" id="book-pdf-file" accept="application/pdf" style="margin-bottom: 5px;">
+                        <input type="url" id="book-pdf" placeholder="أو أضف رابط تحميل PDF (https://...)">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>صفحات القراءة المجانية والمعاينة (محمية تلقائياً ضد النسخ)</label>
+                    <textarea id="book-preview-content" rows="6" placeholder="اكتب أو ألصق صفحات القراءة التي تريد إتاحتها للزوار لقراءتها على الموقع مباشرة..."></textarea>
+                </div>
+
+                <div style="display: flex; gap: 10px; margin-top: 10px;">
+                    <button type="submit" class="btn" id="save-btn">إضافة العمل</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetForm()" id="cancel-btn" style="display:none;">إلغاء التعديل</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="tab-audio" class="admin-tab-content">
+            <form id="audio-form" onsubmit="handleAudioSubmit(event)">
+                <input type="hidden" id="audio-edit-id" value="">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>عنوان المقطع الصوتي / الرواية المسموعة</label>
+                        <input type="text" id="audio-title" required placeholder="عنوان التسجيل الصوتي">
+                    </div>
+                    <div class="form-group">
+                        <label>القارئ / الملقي</label>
+                        <input type="text" id="audio-author" required placeholder="اسم القارئ أو سعيد الشوادفي">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>رابط الملف الصوتي (MP3 / Direct URL)</label>
+                    <input type="url" id="audio-url" required placeholder="https://example.com/audio.mp3">
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" class="btn" id="audio-save-btn">إضافة التسجيل الصوتي</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetAudioForm()" id="audio-cancel-btn" style="display:none;">إلغاء التعديل</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="tab-hero" class="admin-tab-content">
+            <form onsubmit="handleHeroSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>اسم الموقع في أعلى الصفحة</label>
+                        <input type="text" id="logo-text-input" required placeholder="الكاتب الروائي سعيد الشوادفي">
+                    </div>
+                    <div class="form-group">
+                        <label>رابط صورة اللوجو (اختياري)</label>
+                        <input type="url" id="logo-img-input" placeholder="https://example.com/logo.png">
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>رابط صورة خلفية الواجهة (Hero Background)</label>
+                        <input type="url" id="hero-bg-img-input" placeholder="https://example.com/background.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label>لون خلفية الواجهة (في حال عدم وجود صورة)</label>
+                        <input type="color" id="hero-bg-color-input" value="#0f172a" style="height: 48px; cursor: pointer;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>العنوان الرئيسي في الواجهة</label>
+                    <input type="text" id="hero-title-input" required>
+                </div>
+                <div class="form-group">
+                    <label>الوصف الفرعي</label>
+                    <textarea id="hero-desc-input" rows="3" required></textarea>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit" class="btn">حفظ بيانات الواجهة والخلفية</button>
+                    <button type="button" class="btn btn-secondary" onclick="resetDefaultHeroBg()">استعادة الخلفية الافتراضية</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="tab-about" class="admin-tab-content">
+            <form onsubmit="handleAboutSubmit(event)">
+                <div class="form-group">
+                    <label>الفقرة الأولى من نبذة الكاتب</label>
+                    <textarea id="about-p1-input" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>الفقرة الثانية من نبذة الكاتب</label>
+                    <textarea id="about-p2-input" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn">حفظ نبذة الكاتب</button>
+            </form>
+        </div>
+
+        <div id="tab-footer" class="admin-tab-content">
+            <form onsubmit="handleFooterSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>رقم هاتف / واتساب الكاتب</label>
+                        <input type="text" id="footer-phone-input" required placeholder="01096227242">
+                    </div>
+                    <div class="form-group">
+                        <label>البريد الإلكتروني للكاتب</label>
+                        <input type="email" id="footer-email-input" required placeholder="saeidelshwadfy@hotmail.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>حقوق النشر (Footer)</label>
+                    <input type="text" id="footer-copy-input" required>
+                </div>
+                <button type="submit" class="btn">حفظ معلومات التواصل</button>
+            </form>
+        </div>
+
+        <div id="tab-credentials" class="admin-tab-content">
+            <form onsubmit="handleCredentialsSubmit(event)">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>اسم المستخدم الجديد</label>
+                        <input type="text" id="admin-user-input" required placeholder="اسم المستخدم الجديد">
+                    </div>
+                </div>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>كلمة السر الحالية</label>
+                        <input type="password" id="admin-old-pass-input" required placeholder="أدخل كلمة السر الحالية للتأكيد">
+                    </div>
+                    <div class="form-group">
+                        <label>كلمة السر الجديدة</label>
+                        <input type="password" id="admin-new-pass-input" required placeholder="أدخل كلمة السر الجديدة">
+                    </div>
+                </div>
+                <button type="submit" class="btn">حفظ اسم المستخدم وكلمة السر</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- قسم تواصل مع الكاتب -->
+    <section id="publish">
+        <div class="section-title">
+            <h2>تواصل مع الكاتب سعيد الشوادفي</h2>
+        </div>
+        <div class="submit-section">
+            <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 20px;">
+                يسعدنا تواصلكم ومتابعتكم للكاتب سعيد الشوادفي عبر المنصات الرسمية:
+            </p>
+            <div class="social-links-grid">
+                <a href="https://www.facebook.com/Saeid.Elshwadfy" target="_blank" class="social-card social-facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>فيسبوك</span>
+                </a>
+                <a href="https://x.com/Saeidelshwadfy" target="_blank" class="social-card social-twitter">
+                    <i class="fab fa-x-twitter"></i>
+                    <span>منصة X</span>
+                </a>
+                <a href="https://www.tiktok.com/@saeid.elshwadfy?is_from_webapp=1&sender_device=pc" target="_blank" class="social-card social-tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <span>تيك توك</span>
+                </a>
+                <a href="https://www.instagram.com/saeid_elshwadfy?stkn=MTh4a3R5OWdmdGIzZg==" target="_blank" class="social-card social-instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>إنستغرام</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- النوافذ المنبثقة (Modals) -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="toggleAuthModal()">&times;</span>
+            <h3 style="margin-bottom: 20px; color: var(--text-main); text-align: center;">تسجيل دخول لوحة التحكم</h3>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>اسم المستخدم</label>
+                    <input type="text" id="username" required placeholder="أدخل اسم المستخدم">
+                </div>
+                <div class="form-group">
+                    <label>كلمة السر</label>
+                    <input type="password" id="password" required placeholder="أدخل كلمة السر">
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">دخول</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaymentModal()">&times;</span>
+            <h3 style="margin-bottom: 10px; color: var(--text-main); text-align: center;">طرق اقتناء ورعايات العمل</h3>
+            <p style="text-align: center; color: var(--text-muted); font-size:0.9rem;" id="payment-book-title"></p>
+            
+            <div class="payment-methods">
+                <div class="payment-card active" onclick="selectPaymentMethod('wallets')">
+                    <i class="fas fa-wallet"></i>
+                    <strong>المحافظ الإلكترونية</strong>
+                </div>
+                <div class="payment-card" onclick="selectPaymentMethod('instapay')">
+                    <i class="fas fa-university"></i>
+                    <strong>InstaPay</strong>
+                </div>
+                <div class="payment-card" onclick="selectPaymentMethod('card')">
+                    <i class="fas fa-credit-card"></i>
+                    <strong>فيزا / ماستركارد</strong>
+                </div>
+                <div class="payment-card" onclick="selectPaymentMethod('fawry')">
+                    <i class="fas fa-store"></i>
+                    <strong>فوري / أمان</strong>
+                </div>
+            </div>
+
+            <div class="payment-details" id="payment-details-box">
+                <p><strong>الدفع عبر المحافظ الإلكترونية:</strong></p>
+                <p style="margin-top: 5px; font-size: 1.1rem; color: var(--accent); font-weight: bold;" id="payment-phone-display">01096227242</p>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">يرجى تحويل المبلغ المخصص للرقم أعلاه وإرسال الإشعار عبر الواتساب لتأكيد الطلب واستلام النسخة.</p>
+            </div>
+
+            <a id="whatsapp-confirm-link" href="https://wa.me/2001096227242" target="_blank" class="btn" style="width: 100%; margin-top: 20px; text-align: center; text-decoration: none;"> تأكيد الطلب والتواصل عبر الواتساب</a>
+        </div>
+    </div>
+
+    <div class="modal" id="readerModal">
+        <div class="modal-content modal-reader-content">
+            <span class="close-modal" onclick="closeReaderModal()">&times;</span>
+            <h3 style="color: var(--text-main);" id="reader-book-title">قراءة العمل</h3>
+            <p style="color: var(--text-muted); font-size: 0.88rem;" id="reader-book-author"></p>
+
+            <div class="reader-body" id="reader-content-box">
+                جاري تحميل صفحات القراءة...
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <span style="font-size: 0.85rem; color: var(--accent); font-weight: bold;"><i class="fas fa-shield-alt"></i> المحتوى محمي ضد النسخ</span>
+                <button class="btn btn-secondary" onclick="closeReaderModal()">إغلاق القارئ</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <p id="footer-copy-display">&copy; الكاتب الروائي سعيد الشوادفي - جميع الحقوق محفوظة 2026.</p>
+        
+        <div class="footer-contacts-container">
+            <a id="footer-whatsapp-btn" href="https://wa.me/2001096227242" target="_blank" class="footer-whatsapp-link">
+                <i class="fab fa-whatsapp"></i>
+                <span id="footer-phone-display">01096227242</span>
+            </a>
+            
+            <a id="footer-email-btn" href="mailto:saeidelshwadfy@hotmail.com" target="_blank" class="footer-email-link">
+                <i class="fas fa-envelope"></i>
+                <span id="footer-email-display">saeidelshwadfy@hotmail.com</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        let initialBooks = [
+            { id: 1, title: 'ظلال لا تنام', author: 'سعيد الشوادفي', category: 'روايات', isFree: false, pricePaper: '150 ج.م', priceDigital: '50 ج.م', cover: '', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', pdfUrl: '', rating: 5, reads: 320, previewContent: 'فصل من رواية ظلال لا تنام:\n\nفي عتمة الحقيقة، تهمس الظلال بأسماء لا تندثر، وتبحث القلوب عن نور الضمير وسط دروب أثقلها الغموض...' },
+            { id: 2, title: 'ابن الغزال', author: 'سعيد الشوادفي', category: 'روايات', isFree: false, pricePaper: '160 ج.م', priceDigital: '55 ج.م', cover: '', audioUrl: '', pdfUrl: '', rating: 4.9, reads: 245, previewContent: 'من رواية ابن الغزال:\n\nبين أصالة النخوة والوجدان، تولد الحكايات التي تشهد على الصمود وقوة الرؤية في مواجهة تحولات الزمن...' },
+            { id: 3, title: 'عهد أبدي', author: 'سعيد الشوادفي', category: 'روايات', isFree: false, pricePaper: '140 ج.م', priceDigital: '45 ج.م', cover: '', audioUrl: '', pdfUrl: '', rating: 5, reads: 190, previewContent: 'العهود ليست مجرد كلمات تُنطق، بل أنفاس تُعاش ومواقف تحفرها الأيام في ذاكرة الأوفياء...' },
+            { id: 4, title: 'حكايات الغابة الخضراء', author: 'سعيد الشوادفي', category: 'أدب الأطفال', isFree: true, pricePaper: '', priceDigital: '', cover: '', audioUrl: '', pdfUrl: '', rating: 5, reads: 410, previewContent: 'قصص مصورة وممتعة للأطفال تتناول القيم والأخلاق والجمال في عالم الطبيعة الحي...' },
+            { id: 5, title: 'الساقية المهجورة', author: 'سعيد الشوادفي', category: 'قصص', isFree: true, pricePaper: '', priceDigital: '', cover: '', audioUrl: '', pdfUrl: '', rating: 4.8, reads: 280, previewContent: 'قصة قصيرة من وحي القرية والدفء الإنساني والرغبة في استعادة ذكريات الزمن الجميل...' },
+            { id: 6, title: 'قد حان الرحيل', author: 'سعيد الشوادفي', category: 'شعر وخواطر', isFree: true, pricePaper: '', priceDigital: '', cover: '', audioUrl: '', pdfUrl: '', rating: 5, reads: 310, previewContent: 'خواطر وشعر بالعامية المصرية ينبض بالصدق والوجدان والمشاعر المنسابة من القلب...' }
+        ];
+
+        let initialAudio = [
+            { id: 1, title: 'مقدمة واستعراض رواية ظلال لا تنام', author: 'بصوت الكاتب: سعيد الشوادفي', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', plays: 185 },
+            { id: 2, title: 'إلقاء شعري: قد حان الرحيل', author: 'بصوت الكاتب: سعيد الشوادفي', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', plays: 240 }
+        ];
+
+        let initialAbout = {
+            p1: 'سعيد الشوادفي هو كاتب روائي، وشاعر عربي معاصر، يمتلك قلمًا نابضًا بالحياة؛ يتنقل ببراعة بين مشاعر الإنسانية الدافئة وأسرار الواقع الغامض.\n\nعُرف الشوادفي بتنوعه الأدبي الفريد، حيث ينسج من الكلمات عوالم تمزج بين الرومانسية الشفافة؛ القضايا الاجتماعية الواقعية، والإثارة التشويقية، مما يجعله واحدًا من الأدباء الذين يتركون بصمة واضحة في قلب القارئ وعقله.',
+            p2: 'تتميز كتاباته بأسلوب سردي يجمع بين البساطة الجذابة والعمق اللغوي، وكأنه يهمس في أذن القارئ ليأخذه في رحلات عبر صفحات كتبه، متنقلاً بين أروقة الغموض، صراعات النفس، ونبضات القلوب.'
+        };
+
+        let defaultBgImg = 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80&w=1200';
+
+        let initialHero = {
+            logoText: 'الكاتب الروائي سعيد الشوادفي',
+            logoImg: '',
+            heroBgImg: defaultBgImg,
+            heroBgColor: '#0f172a',
+            title: 'الكاتب الروائي سعيد الشوادفي',
+            desc: 'مرحباً بكم في العالم الأدبي للكاتب سعيد الشوادفي.. رحلة بين ظلال السطور وإبداع الروايات والكلمات.'
+        };
+
+        let initialFooter = {
+            phone: '01096227242',
+            email: 'saeidelshwadfy@hotmail.com',
+            copy: '© الكاتب الروائي سعيد الشوادفي - جميع الحقوق محفوظة 2026.'
+        };
+
+        let initialCredentials = {
+            user: 'Saeid74',
+            pass: 'Sa1629As'
+        };
+
+        let books = JSON.parse(localStorage.getItem('saeed_books')) || initialBooks;
+        let audios = JSON.parse(localStorage.getItem('saeed_audios')) || initialAudio;
+        let aboutData = JSON.parse(localStorage.getItem('saeed_about')) || initialAbout;
+        let heroData = JSON.parse(localStorage.getItem('saeed_hero')) || initialHero;
+        let footerData = JSON.parse(localStorage.getItem('saeed_footer')) || initialFooter;
+        let credentialsData = JSON.parse(localStorage.getItem('saeed_credentials')) || initialCredentials;
+
+        let visitorCount = parseInt(localStorage.getItem('saeed_visitors') || '420') + 1;
+        localStorage.setItem('saeed_visitors', visitorCount);
+
+        let isLoggedIn = localStorage.getItem('saeed_admin_logged') === 'true';
+        let currentFilter = 'الكل';
+
+        window.onload = function() {
+            initDarkMode();
+            updateAdminUI();
+            renderHero();
+            renderAbout();
+            renderAudios();
+            renderFooter();
+            renderCredentials();
+            renderBooks();
+            document.getElementById('site-visitor-count').innerText = visitorCount;
+            setupCopyProtection();
+        };
+
+        function setupCopyProtection() {
+            document.addEventListener('contextmenu', event => event.preventDefault());
+
+            document.addEventListener('keydown', function(e) {
+                if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'C' || e.key === 'u' || e.key === 'U' || e.key === 'p' || e.key === 'P' || e.key === 's' || e.key === 'S')) {
+                    e.preventDefault();
+                    return false;
+                }
+            });
+
+            document.addEventListener('dragstart', function(e) {
+                e.preventDefault();
+            });
+        }
+
+        function initDarkMode() {
+            const isDark = localStorage.getItem('saeed_theme') === 'dark';
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-btn').innerHTML = '<i class="fas fa-sun"></i>';
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            localStorage.setItem('saeed_theme', isDark ? 'dark' : 'light');
+            document.getElementById('theme-btn').innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.admin-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active'));
+
+            const targetBtn = Array.from(document.querySelectorAll('.admin-tab-btn')).find(b => b.getAttribute('onclick').includes(tabId));
+            if(targetBtn) targetBtn.classList.add('active');
+            
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        function renderHero() {
+            document.getElementById('site-title-nav').innerText = heroData.logoText || 'سعيد الشوادفي';
+            
+            const logoImgNav = document.getElementById('logo-img-nav');
+            const logoIconNav = document.getElementById('logo-icon-nav');
+
+            if (heroData.logoImg && heroData.logoImg.trim() !== '') {
+                logoImgNav.src = heroData.logoImg;
+                logoImgNav.style.display = 'inline-block';
+                logoIconNav.style.display = 'none';
+            } else {
+                logoImgNav.style.display = 'none';
+                logoIconNav.style.display = 'inline-block';
+            }
+
+            const heroElem = document.getElementById('home');
+            if (heroData.heroBgImg && heroData.heroBgImg.trim() !== '') {
+                heroElem.style.background = `linear-gradient(135deg, rgba(15, 23, 42, 0.4), rgba(30, 41, 59, 0.3)), url('${heroData.heroBgImg}') center/cover no-repeat`;
+            } else {
+                heroElem.style.background = heroData.heroBgColor || '#0f172a';
+            }
+
+            document.getElementById('hero-title-display').innerText = heroData.title;
+            document.getElementById('hero-desc-display').innerText = heroData.desc;
+
+            document.getElementById('logo-text-input').value = heroData.logoText || '';
+            document.getElementById('logo-img-input').value = heroData.logoImg || '';
+            document.getElementById('hero-bg-img-input').value = heroData.heroBgImg || '';
+            document.getElementById('hero-bg-color-input').value = heroData.heroBgColor || '#0f172a';
+            document.getElementById('hero-title-input').value = heroData.title;
+            document.getElementById('hero-desc-input').value = heroData.desc;
+        }
+
+        function handleHeroSubmit(e) {
+            e.preventDefault();
+            heroData = {
+                logoText: document.getElementById('logo-text-input').value,
+                logoImg: document.getElementById('logo-img-input').value,
+                heroBgImg: document.getElementById('hero-bg-img-input').value,
+                heroBgColor: document.getElementById('hero-bg-color-input').value,
+                title: document.getElementById('hero-title-input').value,
+                desc: document.getElementById('hero-desc-input').value
+            };
+            localStorage.setItem('saeed_hero', JSON.stringify(heroData));
+            renderHero();
+            alert('تم حفظ إعدادات الواجهة والخلفية بنجاح!');
+        }
+
+        function resetDefaultHeroBg() {
+            document.getElementById('hero-bg-img-input').value = defaultBgImg;
+            alert('تم تعيين صورة الخلفية الافتراضية.');
+        }
+
+        function renderAbout() {
+            const container = document.getElementById('author-bio-container');
+            container.innerHTML = `
+                <p>${aboutData.p1}</p>
+                <p>${aboutData.p2}</p>
+            `;
+
+            document.getElementById('about-p1-input').value = aboutData.p1;
+            document.getElementById('about-p2-input').value = aboutData.p2;
+        }
+
+        function handleAboutSubmit(e) {
+            e.preventDefault();
+            aboutData = {
+                p1: document.getElementById('about-p1-input').value,
+                p2: document.getElementById('about-p2-input').value
+            };
+            localStorage.setItem('saeed_about', JSON.stringify(aboutData));
+            renderAbout();
+            alert('تم حفظ نبذة الكاتب بنجاح!');
+        }
+
+        function renderAudios() {
+            const container = document.getElementById('audio-container');
+            container.innerHTML = '';
+
+            if (audios.length === 0) {
+                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 20px;">لا توجد تسجيلات صوتية متاحة حالياً.</p>`;
+                return;
+            }
+
+            let sortedAudios = [...audios].sort((a, b) => b.id - a.id);
+
+            sortedAudios.forEach(item => {
+                let adminActions = '';
+                if (isLoggedIn) {
+                    adminActions = `
+                        <div style="display:flex; gap:5px;">
+                            <button class="btn-edit" onclick="editAudio(${item.id})" style="padding: 4px 8px; border-radius: 4px; border:none; cursor:pointer;"><i class="fas fa-edit"></i> تعديل</button>
+                            <button class="btn-delete" onclick="deleteAudio(${item.id})" style="padding: 4px 8px; border-radius: 4px; border:none; cursor:pointer;"><i class="fas fa-trash"></i> حذف</button>
+                        </div>
+                    `;
+                }
+
+                container.innerHTML += `
+                    <div class="audio-card">
+                        <div class="audio-card-header">
+                            <div class="audio-icon-box">
+                                <i class="fas fa-headphones-alt"></i>
+                            </div>
+                            <div class="audio-info">
+                                <h3>${item.title}</h3>
+                                <p>${item.author}</p>
+                            </div>
+                        </div>
+                        <audio controls controlsList="nodownload" onplay="registerAudioPlay(${item.id})">
+                            <source src="${item.audioUrl}" type="audio/mpeg">
+                            متصفحك لا يدعم مشغل الصوتيات.
+                        </audio>
+                        <div class="audio-actions">
+                            <span><i class="fas fa-play-circle"></i> ${item.plays || 0} استماع</span>
+                            <a href="${item.audioUrl}" download target="_blank" style="color: var(--accent); text-decoration: none; font-weight: bold;"><i class="fas fa-download"></i> تحميل</a>
+                            ${adminActions}
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function handleAudioSubmit(e) {
+            e.preventDefault();
+            const editId = document.getElementById('audio-edit-id').value;
+            const title = document.getElementById('audio-title').value;
+            const author = document.getElementById('audio-author').value;
+            const audioUrl = document.getElementById('audio-url').value;
+
+            if (editId) {
+                const index = audios.findIndex(a => a.id == editId);
+                if (index !== -1) {
+                    audios[index].title = title;
+                    audios[index].author = author;
+                    audios[index].audioUrl = audioUrl;
+                    alert('تم تعديل التسجيل الصوتي بنجاح!');
+                }
+            } else {
+                audios.unshift({ id: Date.now(), title, author, audioUrl, plays: 0 });
+                alert('تم إضافة التسجيل الصوتي بنجاح!');
+            }
+
+            localStorage.setItem('saeed_audios', JSON.stringify(audios));
+            renderAudios();
+            resetAudioForm();
+        }
+
+        function editAudio(id) {
+            const item = audios.find(a => a.id === id);
+            if (!item) return;
+
+            document.getElementById('audio-edit-id').value = item.id;
+            document.getElementById('audio-title').value = item.title;
+            document.getElementById('audio-author').value = item.author;
+            document.getElementById('audio-url').value = item.audioUrl;
+
+            document.getElementById('audio-save-btn').innerText = 'حفظ تعديل المقطع';
+            document.getElementById('audio-cancel-btn').style.display = 'inline-block';
+
+            switchTab('tab-audio');
+            window.location.href = "#admin-panel";
+        }
+
+        function resetAudioForm() {
+            document.getElementById('audio-form').reset();
+            document.getElementById('audio-edit-id').value = '';
+            document.getElementById('audio-save-btn').innerText = 'إضافة التسجيل الصوتي';
+            document.getElementById('audio-cancel-btn').style.display = 'none';
+        }
+
+        function registerAudioPlay(id) {
+            const item = audios.find(a => a.id === id);
+            if (item) {
+                item.plays = (item.plays || 0) + 1;
+                localStorage.setItem('saeed_audios', JSON.stringify(audios));
+            }
+        }
+
+        function deleteAudio(id) {
+            if (confirm('هل أنت تأكد من حذف هذا التسجيل الصوتي؟')) {
+                audios = audios.filter(a => a.id !== id);
+                localStorage.setItem('saeed_audios', JSON.stringify(audios));
+                renderAudios();
+            }
+        }
+
+        function renderFooter() {
+            const phoneNum = footerData.phone || '01096227242';
+            const emailAdd = footerData.email || 'saeidelshwadfy@hotmail.com';
+            const cleanPhone = phoneNum.replace(/\D/g, '');
+            
+            document.getElementById('footer-phone-display').innerText = phoneNum;
+            document.getElementById('footer-whatsapp-btn').href = `https://wa.me/20${cleanPhone}`;
+            
+            document.getElementById('footer-email-display').innerText = emailAdd;
+            document.getElementById('footer-email-btn').href = `mailto:${emailAdd}`;
+
+            document.getElementById('footer-copy-display').innerText = footerData.copy;
+
+            document.getElementById('footer-phone-input').value = phoneNum;
+            document.getElementById('footer-email-input').value = emailAdd;
+            document.getElementById('footer-copy-input').value = footerData.copy;
+            
+            const paymentPhone = document.getElementById('payment-phone-display');
+            if (paymentPhone) paymentPhone.innerText = phoneNum;
+            const whatsappLink = document.getElementById('whatsapp-confirm-link');
+            if (whatsappLink) whatsappLink.href = `https://wa.me/20${cleanPhone}`;
+        }
+
+        function handleFooterSubmit(e) {
+            e.preventDefault();
+            footerData = {
+                phone: document.getElementById('footer-phone-input').value,
+                email: document.getElementById('footer-email-input').value,
+                copy: document.getElementById('footer-copy-input').value
+            };
+            localStorage.setItem('saeed_footer', JSON.stringify(footerData));
+            renderFooter();
+            alert('تم حفظ بيانات التواصل بنجاح!');
+        }
+
+        function renderCredentials() {
+            document.getElementById('admin-user-input').value = credentialsData.user;
+            document.getElementById('admin-old-pass-input').value = '';
+            document.getElementById('admin-new-pass-input').value = '';
+        }
+
+        function handleCredentialsSubmit(e) {
+            e.preventDefault();
+            const newUser = document.getElementById('admin-user-input').value.trim();
+            const oldPass = document.getElementById('admin-old-pass-input').value;
+            const newPass = document.getElementById('admin-new-pass-input').value;
+
+            if (oldPass !== credentialsData.pass) {
+                alert('كلمة السر الحالية غير صحيحة!');
+                return;
+            }
+
+            if (!newUser || !newPass) {
+                alert('يرجى ملء كافة الحقول بشكل صحيح!');
+                return;
+            }
+
+            credentialsData = {
+                user: newUser,
+                pass: newPass
+            };
+
+            localStorage.setItem('saeed_credentials', JSON.stringify(credentialsData));
+            renderCredentials();
+            alert('تم تحديث اسم المستخدم وكلمة السر بنجاح!');
+        }
+
+        function generateStars(rating) {
+            let starsHtml = '';
+            let fullStars = Math.floor(rating);
+            let hasHalfStar = rating % 1 >= 0.5;
+
+            for (let i = 0; i < fullStars; i++) { starsHtml += '<i class="fas fa-star"></i>'; }
+            if (hasHalfStar) { starsHtml += '<i class="fas fa-star-half-alt"></i>'; fullStars++; }
+            for (let i = fullStars; i < 5; i++) { starsHtml += '<i class="far fa-star"></i>'; }
+            return starsHtml;
+        }
+
+        function renderBooks() {
+            const container = document.getElementById('books-container');
+            container.innerHTML = '';
+
+            let sortedBooks = [...books];
+
+            let filteredBooks = sortedBooks;
+            if (currentFilter === 'مجاني') {
+                filteredBooks = sortedBooks.filter(b => b.isFree);
+            } else if (currentFilter !== 'الكل') {
+                filteredBooks = sortedBooks.filter(b => b.category === currentFilter);
+            }
+
+            if (filteredBooks.length === 0) {
+                container.innerHTML = `<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 30px;">لا توجد أعمال متاحة في هذا التصنيف حالياً.</p>`;
+                return;
+            }
+
+            filteredBooks.forEach(book => {
+                const coverImg = book.cover ? `<img src="${book.cover}" alt="${book.title}" ondragstart="return false;">` : `<i class="fas fa-book fa-4x"></i>`;
+                const bookRating = book.rating || 5;
+                const readsCount = book.reads || 0;
+                
+                const categoryBadge = book.isFree 
+                    ? `<span class="book-free-badge"><i class="fas fa-gift"></i> مجاني</span>` 
+                    : `<span class="book-category">${book.category}</span>`;
+
+                const pricesHtml = (!book.isFree && (book.pricePaper || book.priceDigital)) ? `
+                    <div class="book-prices-display">
+                        ${book.pricePaper ? `<div class="price-item"><span><i class="fas fa-book"></i> النسخة الورقية:</span> <span class="price-amount">${book.pricePaper}</span></div>` : ''}
+                        ${book.priceDigital ? `<div class="price-item"><span><i class="fas fa-file-pdf"></i> النسخة الالكترونية:</span> <span class="price-amount">${book.priceDigital}</span></div>` : ''}
+                    </div>
+                ` : '';
+
+                const audioPlayerHtml = (book.audioUrl && book.audioUrl.trim() !== '') ? `
+                    <div class="book-audio-player">
+                        <label><i class="fas fa-volume-up"></i> استمع للنسخة الصوتية:</label>
+                        <audio controls controlsList="nodownload">
+                            <source src="${book.audioUrl}" type="audio/mpeg">
+                            متصفحك لا يدعم مشغل الصوتيات.
+                        </audio>
+                    </div>
+                ` : '';
+
+                let adminActions = '';
+                if(isLoggedIn) {
+                    adminActions = `
+                        <div class="admin-card-actions">
+                            <button class="btn-edit" onclick="editBook(${book.id})"><i class="fas fa-edit"></i> تعديل</button>
+                            <button class="btn-delete" onclick="deleteBook(${book.id})"><i class="fas fa-trash"></i> حذف</button>
+                        </div>
+                    `;
+                }
+
+                const cardHtml = `
+                    <div class="book-card">
+                        ${categoryBadge}
+                        <span class="book-reads-badge"><i class="fas fa-book-reader"></i> ${readsCount} قراءة</span>
+                        <div class="book-cover">${coverImg}</div>
+                        <div class="book-info">
+                            <div>
+                                <h3>${book.title}</h3>
+                                <p>${book.author}</p>
+                                <div class="book-rating-display">
+                                    ${generateStars(bookRating)}
+                                    <span>(${bookRating})</span>
+                                </div>
+                            </div>
+
+                            ${pricesHtml}
+
+                            ${audioPlayerHtml}
+                            
+                            <div class="book-actions-container">
+                                <div class="action-row">
+                                    <button class="btn-action btn-action-green" onclick="openReaderModal(${book.id})"><i class="fas fa-book-open"></i> اقرأ مجاناً</button>
+                                    <button class="btn-action btn-action-primary" onclick="downloadPDF(${book.id})"><i class="fas fa-file-pdf"></i> تحميل PDF</button>
+                                </div>
+                                <div class="action-row">
+                                    <button class="btn-action" onclick="openPaymentModal('${book.title}', ${book.isFree})"><i class="fas fa-shopping-cart"></i> ${book.isFree ? 'طلب النسخة' : 'اقتناء العمل'}</button>
+                                </div>
+                                <div class="action-row">
+                                    <button class="btn-action" onclick="rateBook(${book.id})"><i class="fas fa-star"></i> تقييم</button>
+                                    <button class="btn-action" onclick="shareBook('${book.title}')"><i class="fas fa-share-alt"></i> مشاركة</button>
+                                </div>
+                            </div>
+
+                            ${adminActions}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += cardHtml;
+            });
+        }
+
+        function openReaderModal(id) {
+            const book = books.find(b => b.id === id);
+            if (!book) return;
+
+            book.reads = (book.reads || 0) + 1;
+            saveAndRefresh();
+
+            document.getElementById('reader-book-title').innerText = book.title;
+            document.getElementById('reader-book-author').innerText = `تأليف: ${book.author}`;
+            
+            const contentBox = document.getElementById('reader-content-box');
+            if (book.previewContent && book.previewContent.trim() !== '') {
+                contentBox.innerText = book.previewContent;
+            } else {
+                contentBox.innerText = 'عذراً، لا توجد صفحات مضافة للقراءة المباشرة لهذا العمل حالياً. يمكنك التحميل أو طلب الشراء.';
+            }
+
+            document.getElementById('readerModal').style.display = 'flex';
+        }
+
+        function closeReaderModal() {
+            document.getElementById('readerModal').style.display = 'none';
+        }
+
+        function openPaymentModal(title, isFree = false) {
+            if(isFree) {
+                alert(`هذا العمل (${title}) متاح مجاناً للجميع! يمكنك قراءته مباشرة أو تحميله بصيغة PDF.`);
+                return;
+            }
+            document.getElementById('payment-book-title').innerText = `العمل المطلوب: ${title}`;
+            document.getElementById('paymentModal').style.display = 'flex';
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+        }
+
+        function selectPaymentMethod(method) {
+            const cards = document.querySelectorAll('.payment-card');
+            cards.forEach(c => c.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const detailsBox = document.getElementById('payment-details-box');
+            const phoneNum = footerData.phone || '01096227242';
+
+            if (method === 'wallets') {
+                detailsBox.innerHTML = `
+                    <p><strong>الدفع عبر المحافظ الإلكترونية:</strong></p>
+                    <p style="margin-top: 5px; font-size: 1.1rem; color: var(--accent); font-weight: bold;">${phoneNum}</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">يرجى تحويل المبلغ المخصص للرقم أعلاه من أي محفظة إلكترونية ثم إرسال صورة الإيصال عبر الواتساب لتأكيد الطلب.</p>
+                `;
+            } else if (method === 'instapay') {
+                detailsBox.innerHTML = `
+                    <p><strong>طريقة الدفع عبر InstaPay:</strong></p>
+                    <p style="margin-top: 5px; font-size: 1rem; color: var(--accent); font-weight: bold;">${phoneNum} / saeed@instapay</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">يمكنك التحويل المباشر لعنوان الدفع أو الرقم ثم إرسال الإشعار عبر الواتساب.</p>
+                `;
+            } else if (method === 'card') {
+                detailsBox.innerHTML = `
+                    <p><strong>الدفع بالبطاقة البنكية (Visa / Mastercard):</strong></p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">لإتمام الدفع عبر الفيزا، يرجى التواصل عبر الواتساب لتزويدك برابط بوابات الدفع المباشرة.</p>
+                `;
+            } else if (method === 'fawry') {
+                detailsBox.innerHTML = `
+                    <p><strong>الدفع عبر منافذ فوري / أمان:</strong></p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 5px;">يرجى التواصل معنا عبر الواتساب لتوليد كود دفع خاص بطلبك وإتمام العملية بسهولة.</p>
+                `;
+            }
+        }
+
+        function downloadPDF(id) {
+            const book = books.find(b => b.id === id);
+            if (book && book.pdfUrl && book.pdfUrl.trim() !== '') {
+                window.open(book.pdfUrl, '_blank');
+            } else {
+                alert(`عذراً، رابط تحميل ملف الـ PDF غير متوفر حالياً لهذا العمل.`);
+            }
+        }
+
+        function rateBook(id) {
+            const book = books.find(b => b.id === id);
+            if(!book) return;
+
+            let rating = prompt(`قّم عمل (${book.title}) من 1 إلى 5:`, book.rating || '5');
+            let numRating = parseFloat(rating);
+            
+            if(!isNaN(numRating) && numRating >= 1 && numRating <= 5) {
+                book.rating = numRating;
+                saveAndRefresh();
+                alert(`شكرًا لتقييمك! تم تحديث تقييم العمل إلى ${numRating} نجوم.`);
+            } else if(rating !== null) {
+                alert('يرجى إدخال رقم صحيح من 1 إلى 5');
+            }
+        }
+
+        function shareBook(title) {
+            if (navigator.share) {
+                navigator.share({ title: title, text: `تفقد هذا العمل الأدبي: ${title}`, url: window.location.href }).catch(() => {});
+            } else {
+                alert(`تم نسخ رابط عمل (${title}) لمشاركته!`);
+            }
+        }
+
+        function filterBooks(category) {
+            currentFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.innerText.includes(category));
+            });
+            renderBooks();
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+
+            if(user === credentialsData.user && pass === credentialsData.pass) {
+                isLoggedIn = true;
+                localStorage.setItem('saeed_admin_logged', 'true');
+                toggleAuthModal();
+                updateAdminUI();
+                renderAbout();
+                renderAudios();
+                renderBooks();
+                renderCredentials();
+                alert('تم تسجيل الدخول بنجاح بصفتك مشرفاً!');
+            } else {
+                alert('اسم المستخدم أو كلمة السر غير صحيحة!');
+            }
+        }
+
+        function logout() {
+            isLoggedIn = false;
+            localStorage.setItem('saeed_admin_logged', 'false');
+            updateAdminUI();
+            renderAbout();
+            renderAudios();
+            renderBooks();
+            alert('تم تسجيل الخروج.');
+        }
+
+        function updateAdminUI() {
+            const authBtn = document.getElementById('auth-btn');
+            const adminPanel = document.getElementById('admin-panel');
+
+            if(isLoggedIn) {
+                authBtn.innerHTML = `<i class="fas fa-sign-out-alt"></i> تسجيل خروج`;
+                authBtn.onclick = logout;
+                adminPanel.style.display = 'block';
+            } else {
+                authBtn.innerHTML = `<i class="fas fa-lock"></i> لوحة التحكم`;
+                authBtn.onclick = toggleAuthModal;
+                adminPanel.style.display = 'none';
+            }
+        }
+
+        function toggleAuthModal() {
+            const modal = document.getElementById('loginModal');
+            modal.style.display = (modal.style.display === 'flex') ? 'none' : 'flex';
+        }
+
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                if (!file) return resolve('');
+                const reader = new FileReader();
+                reader.onload = e => resolve(e.target.result);
+                reader.onerror = err => reject(err);
+                reader.readAsDataURL(file);
+            });
+        }
+
+        async function handleBookSubmit(e) {
+            e.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            const title = document.getElementById('book-title').value;
+            const author = document.getElementById('book-author').value;
+            const category = document.getElementById('book-category').value;
+            const pricePaper = document.getElementById('book-price-paper').value;
+            const priceDigital = document.getElementById('book-price-digital').value;
+            const isFree = document.getElementById('book-is-free').checked;
+            
+            const coverFileInput = document.getElementById('book-cover-file');
+            const coverUrlInput = document.getElementById('book-cover');
+            let cover = coverUrlInput.value;
+            if (coverFileInput.files && coverFileInput.files[0]) {
+                cover = await readFileAsDataURL(coverFileInput.files[0]);
+            }
+
+            const audioUrl = document.getElementById('book-audio-url').value;
+            
+            const pdfFileInput = document.getElementById('book-pdf-file');
+            const pdfUrlInput = document.getElementById('book-pdf');
+            let pdfUrl = pdfUrlInput.value;
+            if (pdfFileInput.files && pdfFileInput.files[0]) {
+                pdfUrl = await readFileAsDataURL(pdfFileInput.files[0]);
+            }
+
+            const previewContent = document.getElementById('book-preview-content').value;
+
+            if(id) {
+                const index = books.findIndex(b => b.id == id);
+                if(index !== -1) {
+                    const updatedBook = { 
+                        ...books[index], 
+                        title, 
+                        author, 
+                        category, 
+                        pricePaper,
+                        priceDigital,
+                        isFree, 
+                        cover: cover || books[index].cover, 
+                        audioUrl, 
+                        pdfUrl: pdfUrl || books[index].pdfUrl, 
+                        previewContent 
+                    };
+                    
+                    books.splice(index, 1);
+                    books.unshift(updatedBook);
+
+                    alert('تم حفظ التعديلات بنجاح ونقل العمل للمقدمة!');
+                }
+            } else {
+                const newBook = { id: Date.now(), title, author, category, pricePaper, priceDigital, isFree, cover, audioUrl, pdfUrl, previewContent, rating: 5, reads: 0 };
+                books.unshift(newBook);
+                alert('تم إضافة العمل بنجاح في المقدمة!');
+            }
+
+            saveAndRefresh();
+            resetForm();
+        }
+
+        function editBook(id) {
+            const book = books.find(b => b.id === id);
+            if(!book) return;
+
+            document.getElementById('edit-id').value = book.id;
+            document.getElementById('book-title').value = book.title;
+            document.getElementById('book-author').value = book.author;
+            document.getElementById('book-category').value = book.category;
+            document.getElementById('book-price-paper').value = book.pricePaper || '';
+            document.getElementById('book-price-digital').value = book.priceDigital || '';
+            document.getElementById('book-is-free').checked = !!book.isFree;
+            document.getElementById('book-cover').value = book.cover && !book.cover.startsWith('data:') ? book.cover : '';
+            document.getElementById('book-audio-url').value = book.audioUrl || '';
+            document.getElementById('book-pdf').value = book.pdfUrl && !book.pdfUrl.startsWith('data:') ? book.pdfUrl : '';
+            document.getElementById('book-preview-content').value = book.previewContent || '';
+
+            document.getElementById('book-cover-file').value = '';
+            document.getElementById('book-pdf-file').value = '';
+
+            document.getElementById('save-btn').innerText = 'حفظ التعديلات';
+            document.getElementById('cancel-btn').style.display = 'inline-block';
+
+            switchTab('tab-books');
+            window.location.href = "#admin-panel";
+        }
+
+        function deleteBook(id) {
+            if(confirm('هل أنت تأكد من رغبتك في حذف هذا العمل؟')) {
+                books = books.filter(b => b.id !== id);
+                saveAndRefresh();
+            }
+        }
+
+        function resetForm() {
+            document.getElementById('book-form').reset();
+            document.getElementById('edit-id').value = '';
+            document.getElementById('book-cover-file').value = '';
+            document.getElementById('book-pdf-file').value = '';
+            document.getElementById('save-btn').innerText = 'إضافة العمل';
+            document.getElementById('cancel-btn').style.display = 'none';
+        }
+
+        function saveAndRefresh() {
+            localStorage.setItem('saeed_books', JSON.stringify(books));
+            renderBooks();
+        }
+    </script>
+</body>
+</html>
