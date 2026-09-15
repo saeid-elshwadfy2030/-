@@ -2119,5 +2119,25 @@
             renderBooks();
         }
     </script>
+
+    <!-- إعداد وتهيئة كود الفايربيس (Firebase Setup) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyATBVwbUSaNravdHHfbzF84zDz6I4zXPcM",
+            authDomain: "saeid-elshwadfy2030.firebaseapp.com",
+            projectId: "saeid-elshwadfy2030",
+            storageBucket: "saeid-elshwadfy2030.firebasestorage.app",
+            messagingSenderId: "878970124445",
+            appId: "1:878970124445:web:18bc0a1a21c7ed3af23c74",
+            measurementId: "G-NW5W8JSNX8"
+        };
+
+        // تهيئة تطبيق الفايربيس
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 </body>
 </html>
