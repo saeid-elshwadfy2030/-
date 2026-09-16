@@ -260,7 +260,6 @@
             border-radius: 2px;
         }
 
-        /* تنسيقات قسم التعريف بالكاتب المميز */
         .author-about-card {
             background: rgba(217, 119, 6, 0.08);
             border-radius: 16px;
@@ -490,19 +489,6 @@
         .book-card:hover .book-cover img {
             transform: scale(1.03);
             box-shadow: -6px 0 15px rgba(0, 0, 0, 0.35);
-        }
-
-        .book-cover::before {
-            content: '';
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            bottom: 12px;
-            width: 4px;
-            background: rgba(255, 255, 255, 0.25);
-            z-index: 2;
-            pointer-events: none;
-            border-radius: 2px;
         }
 
         .book-info {
@@ -893,9 +879,6 @@
             margin: 15px 0;
             white-space: pre-wrap;
             position: relative;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
             user-select: none;
         }
 
@@ -1014,7 +997,6 @@
         <p id="hero-desc-display">مرحباً بكم في العالم الأدبي للكاتب سعيد الشوادفي.. رحلة بين ظلال السطور وإبداع الروايات والكلمات.</p>
     </section>
 
-    <!-- قسم عن الكاتب سعيد الشوادفي -->
     <section id="about-author">
         <div class="section-title">
             <h2>عن الكاتب سعيد الشوادفي</h2>
@@ -1028,7 +1010,6 @@
         </div>
     </section>
 
-    <!-- قسم المؤلفات والأعمال الأدبية -->
     <section id="books">
         <div class="section-title">
             <h2>المؤلفات والأعمال الأدبية</h2>
@@ -1047,7 +1028,6 @@
         <div class="books-grid" id="books-container"></div>
     </section>
 
-    <!-- قسم المكتبة الصوتية والروايات المسموعة -->
     <section id="audio-section">
         <div class="section-title">
             <h2>المكتبة الصوتية والروايات المسموعة</h2>
@@ -1055,7 +1035,6 @@
         <div class="audio-grid" id="audio-container"></div>
     </section>
 
-    <!-- لوحة التحكم الشاملة -->
     <section id="admin-panel">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
             <h3><i class="fas fa-sliders-h"></i> لوحة التحكم الشاملة</h3>
@@ -1257,7 +1236,6 @@
         </div>
     </section>
 
-    <!-- قسم تواصل مع الكاتب -->
     <section id="publish">
         <div class="section-title">
             <h2>تواصل مع الكاتب سعيد الشوادفي</h2>
@@ -1275,11 +1253,11 @@
                     <i class="fab fa-x-twitter"></i>
                     <span>منصة X</span>
                 </a>
-                <a href="https://www.tiktok.com/@saeid.elshwadfy?is_from_webapp=1&sender_device=pc" target="_blank" class="social-card social-tiktok">
+                <a href="https://www.tiktok.com/@saeid.elshwadfy" target="_blank" class="social-card social-tiktok">
                     <i class="fab fa-tiktok"></i>
                     <span>تيك توك</span>
                 </a>
-                <a href="https://www.instagram.com/saeid_elshwadfy?stkn=MTh4a3R5OWdmdGIzZg==" target="_blank" class="social-card social-instagram">
+                <a href="https://www.instagram.com/saeid_elshwadfy" target="_blank" class="social-card social-instagram">
                     <i class="fab fa-instagram"></i>
                     <span>إنستغرام</span>
                 </a>
@@ -1287,7 +1265,6 @@
         </div>
     </section>
 
-    <!-- النوافذ المنبثقة (Modals) -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
             <span class="close-modal" onclick="toggleAuthModal()">&times;</span>
@@ -1313,19 +1290,19 @@
             <p style="text-align: center; color: var(--text-muted); font-size:0.9rem;" id="payment-book-title"></p>
             
             <div class="payment-methods">
-                <div class="payment-card active" onclick="selectPaymentMethod('wallets')">
+                <div class="payment-card active" onclick="selectPaymentMethod(event, 'wallets')">
                     <i class="fas fa-wallet"></i>
                     <strong>المحافظ الإلكترونية</strong>
                 </div>
-                <div class="payment-card" onclick="selectPaymentMethod('instapay')">
+                <div class="payment-card" onclick="selectPaymentMethod(event, 'instapay')">
                     <i class="fas fa-university"></i>
                     <strong>InstaPay</strong>
                 </div>
-                <div class="payment-card" onclick="selectPaymentMethod('card')">
+                <div class="payment-card" onclick="selectPaymentMethod(event, 'card')">
                     <i class="fas fa-credit-card"></i>
                     <strong>فيزا / ماستركارد</strong>
                 </div>
-                <div class="payment-card" onclick="selectPaymentMethod('fawry')">
+                <div class="payment-card" onclick="selectPaymentMethod(event, 'fawry')">
                     <i class="fas fa-store"></i>
                     <strong>فوري / أمان</strong>
                 </div>
@@ -1376,17 +1353,102 @@
 
     <script>
         let initialBooks = [
-            { id: 1, title: 'ظلال لا تنام', author: 'سعيد الشوادفي', category: 'روايات', isFree: false, pricePaper: '150 ج.م', priceDigital: '50 ج.م', cover: '', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', pdfUrl: '', rating: 5, reads: 320, previewContent: 'فصل من رواية ظلال لا تنام:\n\nفي عتمة الحقيقة، تهمس الظلال بأسماء لا تندثر، وتبحث القلوب عن نور الضمير وسط دروب أثقلها الغموض...' },
-            { id: 2, title: 'ابن الغزال', author: 'سعيد الشوادفي', category: 'روايات', isFree: false, pricePaper: '160 ج.م', priceDigital: '55 ج.م', cover: '', audioUrl: '', pdfUrl: '', rating: 4.9, reads: 245, previewContent: 'من رواية ابن الغزال:\n\nبين أصالة النخوة والوجدان، تولد الحكايات التي تشهد على الصمود وقوة الرؤية في مواجهة تحولات الزمن...' },
-            { id: 3, title: 'عهد أبدي', author: 'سعيد الشوادفي', category: 'روايات', isFree: false, pricePaper: '140 ج.م', priceDigital: '45 ج.م', cover: '', audioUrl: '', pdfUrl: '', rating: 5, reads: 190, previewContent: 'العهود ليست مجرد كلمات تُنطق، بل أنفاس تُعاش ومواقف تحفرها الأيام في ذاكرة الأوفياء...' },
-            { id: 4, title: 'حكايات الغابة الخضراء', author: 'سعيد الشوادفي', category: 'أدب الأطفال', isFree: true, pricePaper: '', priceDigital: '', cover: '', audioUrl: '', pdfUrl: '', rating: 5, reads: 410, previewContent: 'قصص مصورة وممتعة للأطفال تتناول القيم والأخلاق والجمال في عالم الطبيعة الحي...' },
-            { id: 5, title: 'الساقية المهجورة', author: 'سعيد الشوادفي', category: 'قصص', isFree: true, pricePaper: '', priceDigital: '', cover: '', audioUrl: '', pdfUrl: '', rating: 4.8, reads: 280, previewContent: 'قصة قصيرة من وحي القرية والدفء الإنساني والرغبة في استعادة ذكريات الزمن الجميل...' },
-            { id: 6, title: 'قد حان الرحيل', author: 'سعيد الشوادفي', category: 'شعر وخواطر', isFree: true, pricePaper: '', priceDigital: '', cover: '', audioUrl: '', pdfUrl: '', rating: 5, reads: 310, previewContent: 'خواطر وشعر بالعامية المصرية ينبض بالصدق والوجدان والمشاعر المنسابة من القلب...' }
+            { 
+                id: 1, 
+                title: 'الغروب الدامي', 
+                author: 'سعيد الشوادفي', 
+                category: 'روايات', 
+                isFree: false, 
+                pricePaper: '150 ج.م', 
+                priceDigital: '50 ج.م', 
+                cover: '', 
+                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
+                pdfUrl: '', 
+                rating: 5, 
+                reads: 480, 
+                previewContent: 'من رواية الغروب الدامي:\n\nفي عتمة الحقيقة، تهمس الظلال بأسماء لا تندثر، وتبحث القلوب عن نور الضمير وسط دروب أثقلها الغموض والأسرار. تتصاعد الأحداث لتبين قوة النفس الإنسانية في مواجهة أعتى المصاعب والأقدار...' 
+            },
+            { 
+                id: 2, 
+                title: 'ابن الغزال', 
+                author: 'سعيد الشوادفي', 
+                category: 'روايات', 
+                isFree: false, 
+                pricePaper: '160 ج.م', 
+                priceDigital: '55 ج.م', 
+                cover: '', 
+                audioUrl: '', 
+                pdfUrl: '', 
+                rating: 4.9, 
+                reads: 360, 
+                previewContent: 'من رواية ابن الغزال:\n\nبين أصالة النخوة والوجدان، تولد الحكايات التي تشهد على الصمود وقوة الرؤية في مواجهة تحولات الزمن والتحديات الاجتماعية الشاقة...' 
+            },
+            { 
+                id: 3, 
+                title: 'لحظة ميلاد', 
+                author: 'سعيد الشوادفي', 
+                category: 'روايات', 
+                isFree: false, 
+                pricePaper: '140 ج.م', 
+                priceDigital: '45 ج.م', 
+                cover: '', 
+                audioUrl: '', 
+                pdfUrl: '', 
+                rating: 5, 
+                reads: 290, 
+                previewContent: 'من رواية لحظة ميلاد:\n\nتتجدد الأرواح حين تتقاطع السطور، ويولد الأمل من بين طيات الألم ليرسم بداية جديدة تستحق النضال والتضحية...' 
+            },
+            { 
+                id: 4, 
+                title: 'آه لو تعرف', 
+                author: 'سعيد الشوادفي', 
+                category: 'شعر وخواطر', 
+                isFree: false, 
+                pricePaper: '110 ج.م', 
+                priceDigital: '35 ج.م', 
+                cover: '', 
+                audioUrl: '', 
+                pdfUrl: '', 
+                rating: 5, 
+                reads: 410, 
+                previewContent: 'من ديوان آه لو تعرف:\n\nآه لو تعرف ما يحمله الصمت في القلوب، وما تخفيه العيون من حنين ونبض يتحدث بلغة الخلود والمشاعر المنسابة...' 
+            },
+            { 
+                id: 5, 
+                title: 'حكايات الغابة الخضراء', 
+                author: 'سعيد الشوادفي', 
+                category: 'أدب الأطفال', 
+                isFree: true, 
+                pricePaper: '', 
+                priceDigital: '', 
+                cover: '', 
+                audioUrl: '', 
+                pdfUrl: '', 
+                rating: 5, 
+                reads: 520, 
+                previewContent: 'قصص مصورة وممتعة للأطفال تتناول القيم والأخلاق والجمال في عالم الطبيعة الحي والتكافل بين الكائنات...' 
+            },
+            { 
+                id: 6, 
+                title: 'الساقية المهجورة', 
+                author: 'سعيد الشوادفي', 
+                category: 'قصص', 
+                isFree: true, 
+                pricePaper: '', 
+                priceDigital: '', 
+                cover: '', 
+                audioUrl: '', 
+                pdfUrl: '', 
+                rating: 4.8, 
+                reads: 310, 
+                previewContent: 'قصة قصيرة من وحي القرية والدفء الإنساني والرغبة في استعادة ذكريات الزمن الجميل وأصالة الملامح المصرية...' 
+            }
         ];
 
         let initialAudio = [
-            { id: 1, title: 'مقدمة واستعراض رواية ظلال لا تنام', author: 'بصوت الكاتب: سعيد الشوادفي', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', plays: 185 },
-            { id: 2, title: 'إلقاء شعري: قد حان الرحيل', author: 'بصوت الكاتب: سعيد الشوادفي', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', plays: 240 }
+            { id: 1, title: 'مقدمة واستعراض رواية الغروب الدامي', author: 'بصوت الكاتب: سعيد الشوادفي', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', plays: 320 },
+            { id: 2, title: 'إلقاء شعري: آه لو تعرف', author: 'بصوت الكاتب: سعيد الشوادفي', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3', plays: 450 },
+            { id: 3, title: 'الفصل الأول من رواية ابن الغزال', author: 'بصوت الكاتب: سعيد الشوادفي', audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', plays: 280 }
         ];
 
         let initialAbout = {
@@ -1423,7 +1485,7 @@
         let footerData = JSON.parse(localStorage.getItem('saeed_footer')) || initialFooter;
         let credentialsData = JSON.parse(localStorage.getItem('saeed_credentials')) || initialCredentials;
 
-        let visitorCount = parseInt(localStorage.getItem('saeed_visitors') || '420') + 1;
+        let visitorCount = parseInt(localStorage.getItem('saeed_visitors') || '530') + 1;
         localStorage.setItem('saeed_visitors', visitorCount);
 
         let isLoggedIn = localStorage.getItem('saeed_admin_logged') === 'true';
@@ -1878,10 +1940,10 @@
             document.getElementById('paymentModal').style.display = 'none';
         }
 
-        function selectPaymentMethod(method) {
+        function selectPaymentMethod(e, method) {
             const cards = document.querySelectorAll('.payment-card');
             cards.forEach(c => c.classList.remove('active'));
-            event.currentTarget.classList.add('active');
+            e.currentTarget.classList.add('active');
 
             const detailsBox = document.getElementById('payment-details-box');
             const phoneNum = footerData.phone || '01096227242';
@@ -2120,7 +2182,7 @@
         }
     </script>
 
-    <!-- إعداد وتهيئة كود الفايربيس (Firebase Setup) -->
+    <!-- تهيئة Firebase JavaScript للمتصفح -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-analytics.js";
@@ -2136,7 +2198,6 @@
             measurementId: "G-NW5W8JSNX8"
         };
 
-        // تهيئة تطبيق الفايربيس
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
     </script>
